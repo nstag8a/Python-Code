@@ -1,0 +1,88 @@
+This is apicture of a catipillar using python
+
+
+from turtle import *
+
+def move_to(x, y):
+    pensize(3)
+    pu()
+    goto(x,y)
+    pd()
+
+def draw_circle(x, y, radius, colour):
+    move_to(x, y)
+    begin_fill()
+    fillcolor(colour)
+    circle(radius)
+    end_fill()
+
+def draw_line(x1, y1, x2, y2):
+    move_to(x1, y1)
+
+    goto(x2, y2)
+    
+def draw_square(x, y, length, colour):
+    move_to(x, y)
+    
+    begin_fill()
+    fillcolor(colour)
+    for draw_square in range(4):
+        fd(length)
+        rt(90)
+    end_fill()
+    
+def caterpillar(head_clr, eye_clr, body_clr):
+    x1, y1, x2, y2 = -60, 100, -30, 60
+    draw_line(x1, y1, x2, y2)
+    x1, y1, x2, y2 = -30, 60, 0, 100
+    draw_line(x1, y1, x2, y2)
+
+    x1, y1, x2, y2 = 140, -15, 120, 30
+    draw_line(x1, y1, x2, y2)
+    x1, y1, x2, y2 = 120, 30, 100, -15
+    draw_line(x1, y1, x2, y2)
+    
+    x1, y1, x2, y2 = 80, -15, 60, 30
+    draw_line(x1, y1, x2, y2)
+    x1, y1, x2, y2 = 60, 30, 40, -15
+    draw_line(x1, y1, x2, y2)
+    
+    x1, y1, x2, y2 = 20, -15, 0, 30
+    draw_line(x1, y1, x2, y2)
+    x1, y1, x2, y2 = -0, 30, -20, -15
+    draw_line(x1, y1, x2, y2)
+
+    x, y, radius = 0, 0, 30
+    for caterpillar in range(3):
+        draw_circle(x, y, radius, body_clr)
+        x += radius * 2
+        
+    x, y, = -30, 30    
+    draw_circle(x, y, radius, head_clr)
+    
+    x, y, radius = -20, 65, 5
+    draw_circle(x, y, radius, eye_clr)
+    x, y, radius = -40, 65, 5
+    draw_circle(x, y, radius, eye_clr) 
+    
+    x, y = -40,40
+    move_to(x, y)
+    fd(20)
+
+def base(base_colour):
+    x, y, length = -50, -20, 50
+    for base in range(4):
+        draw_square(x, y, length, base_colour)
+        x += length    
+    
+def main():
+    base_colour, body_colour = "red", "green"
+    head_colour, eye_colour = "purple", "black"
+    caterpillar(head_colour, eye_colour, body_colour)
+    base(base_colour)
+
+main()
+
+exitonclick()
+
+
